@@ -1,0 +1,10 @@
+.get-started-button{
+    height: 60px;
+    width: 80% ; 
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: "Inter";
+    font-weight: 600;
+  }

@@ -1,0 +1,55 @@
+.bg-container{
+    width: 25%;
+    margin: auto;
+    padding: 20px;
+    background-color: #1E1E1E;
+    height: 94vh;
+    background-image: url('../assets/images/desktop-wallpaper-hopped-the-original-background-if-you-want-to-use-whatsapp-dark-mode-go-to-settings-chats-background-and-use-this-r-whatsapp\ 2.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .heading{
+    color: #ffffff;
+    font-family: "Inter";
+    font-size: 40px;
+  }
+  
+  .background-chat-image{
+    margin-top: 20px;
+  }
+
+
+  .secure-show-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .heading-2{
+    color: #ffffff;
+    font-family: "Inter";
+    margin-top: 30px;
+    text-align: left;
+    font-size: 26px;
+    font-weight: 800;
+  }
+
+  .secure-show-container > p{
+    color: #ffffff;
+    font-family: "Inter";
+    margin-top: 30px;
+    font-size: larger;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  .button-link{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+  

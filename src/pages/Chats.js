@@ -26,7 +26,7 @@ const userData= [
 ]
 const Chats = () => {
     return(
-        <div className='bg-container'>
+        <div className='chat-bg-container'>
             <p className="Welcome-user">Welcome back, <span className='user-name'>vinay</span></p>
             <ul className="logos-container">
                 <svg width="60" height="90" viewBox="0 0 69 94" fill="none" xmlns="http://www.w3.org/2000/svg">

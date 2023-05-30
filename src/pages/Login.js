@@ -5,7 +5,7 @@ import '../css/Login.css'
 
 const Login = () => {
     return(
-        <div className="bg-container">
+        <div className="login-bg-container">
             <h1 className="heading"> BEEP</h1>
             <BackgroundChatImage className="background-chat-image" />
             <div className="login-container">
@@ -18,7 +18,7 @@ const Login = () => {
                 <input type="checkbox" className="checkbox-element"/>
             <p>Accept Terms & Conditions</p>
             </div>
-            <Button buttonText={'Login'}/>
+            <Button buttonText={'Login'} className="button-element"/>
         </div>
     )
 }

@@ -37,6 +37,8 @@ const Login = () => {
           onlyCountries={["in"]}
           disableCountryCode={true}
           containerClass="container-class"
+          //   containerStyle={{ width: "100%" }}
+          inputStyle={{ width: "100%", margin: "auto" }}
         />
       </div>
       <div className="checkbox-container">

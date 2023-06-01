@@ -14,7 +14,8 @@ class Login extends Component {
     }
 
     onEnterMobileNo = event => {
-        if(event.target.value.length === 10 && event.target.checked === true){
+        const{isCheckBoxClicked} = this.state
+        if(event.target.value.length === 10 && isCheckBoxClicked === true){
             this.setState({isButtonDisabled: false})
         }else{
             this.setState({isButtonDisabled: true})

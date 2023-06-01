@@ -1,9 +1,11 @@
-
-import ProdRoutes from './ProdRoutes';
+import { MainContextProvider } from "./Context";
+import ProdRoutes from "./ProdRoutes";
 
 function App() {
   return (
-    <ProdRoutes/>
+    <MainContextProvider>
+      <ProdRoutes />
+    </MainContextProvider>
   );
 }
 

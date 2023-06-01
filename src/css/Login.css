@@ -19,15 +19,20 @@
 }
   
 .background-chat-image{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .login-container{
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    height: 40px;
-    margin-top: 20px;
+    margin-top: auto;
     padding: 0;
     border-radius: 5px;
+}
+.number-input-coutry-container{
+    display: flex;
+    align-items: center;
 }
 .country-code-container{
     padding: 0;
@@ -40,8 +45,8 @@
     margin: 0;
     border-radius: 5px;
 }
-.login-container > input{
-    height: 38px;
+.mobile-no-input-element{
+    height: 40px;
     width: 200px;
     border-radius: 5px;
     outline: none;
@@ -50,20 +55,24 @@
 
 
 .checkbox-container{
+    margin-top: 20px;
     width: 100%;
     display: flex;
     align-items: center;
-    margin-left: 50px;
-    margin-top: 30px;
+    padding: 0;
+    margin-bottom: 0;
   }
  .checkbox-element{
     height: 40px;
  } 
- .checkbox-container > p{
+ .accept-terms-text{
     color: #ffffff;
     font-family: "Inter";
     margin-top: 30px;
-    font-size: larger;
+    font-size: 18px;
     margin-bottom: 30px;
     margin-left: 10px;
   }
+.button-element{
+    height: 40px;
+}

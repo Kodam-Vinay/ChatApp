@@ -1,10 +1,11 @@
 import './index.css'
 
 const Button = props => {
-  const {buttonText} = props
+  const {buttonText, disabled, type} = props
   return (
-    <button type="button" className="get-started-button">{buttonText}</button>
+    <button type={type} className="get-started-button" disabled={disabled}>{buttonText}</button>
   )
 }
+
 
 export default Button

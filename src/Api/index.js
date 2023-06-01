@@ -13,16 +13,22 @@ export const ApiCall = axios.create({
 export const sendOTP = async (number) => {
   let res = await ApiCall.post(`/user/auth`, { number });
   console.log("Response", res);
-  if (res.status === 200) {
-    SuccessToast(res.message);
+  const { data } = res;
+  if (data.status == 200) {
+    SuccessToast(data.message);
   } else {
-    ErrorToast(res.message);
+    ErrorToast(data.message);
   }
-  return res;
+  return data;
 };
 
 export const verifyOtp = async (number, otp) => {
-  let res = await ApiCall.post(`user/auth/verify-otp`);
-  console.log("Response", res);
-  return res;
+  let res = await ApiCall.post(`user/auth/verify-otp`, { number, otp });
+  const { data } = res;
+  if (data.status == 200) {
+    SuccessToast(data.message);
+  } else {
+    ErrorToast(data.message);
+  }
+  return data;
 };

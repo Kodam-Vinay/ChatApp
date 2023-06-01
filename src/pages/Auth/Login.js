@@ -1,16 +1,18 @@
-import BackgroundChatImage from "../components/svgs/BackgroundChatImage";
-import CountryCodeImage from "../components/svgs/CountryCodeImage";
-import Button from "../components/Button";
-import "../css/Login.css";
+import BackgroundChatImage from "../../components/svgs/BackgroundChatImage";
+import Button from "../../components/Button";
+import "../../css/Login.css";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import Toast, { Success } from "../components/Toast";
-import { sendOTP } from "../Api";
+import Toast, { ErrorToast } from "../../components/Toast";
+import { sendOTP } from "../../Api";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState({ number: "", checked: false });
   const [loading, setLoading] = useState(false);
+  let navigate = useNavigate();
+
   const numberChange = (phone) => {
     console.log({ phone });
     setUser((prev) => ({ ...prev, number: phone }));
@@ -19,11 +21,21 @@ const Login = () => {
     setUser((prev) => ({ ...prev, checked: !user.checked }));
   };
   const loginFn = async () => {
-    if (user.number && user.checked) {
-      //   Success();
-      let Response = await sendOTP(user.number);
-      console.log({ Response });
+    if (!user.number) {
+      return ErrorToast("Please Enter Your Number");
     }
+    if (!user.checked) {
+      return ErrorToast("Please Accecpt Terms ");
+    }
+    setLoading(true);
+    let res = await sendOTP(user.number);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+    if (res.status === 200) {
+      navigate("/otp", { state: { number: user.number } });
+    }
+    console.log("loginResponse", res);
   };
   return (
     <div className="login-bg-container">

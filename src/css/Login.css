@@ -83,3 +83,16 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.resendBtn
+{
+    border-radius: 50px;
+    width: 80px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+}
+.resendBtn:hover{
+    background-color: transparent;
+    color: white;
+}

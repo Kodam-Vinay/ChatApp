@@ -8,6 +8,8 @@
     cursor: pointer;
     font-family: "Inter";
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
   .get-started-button:hover{
     background-color: rgba(0,0,0,0.5);

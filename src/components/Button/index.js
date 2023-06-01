@@ -10,8 +10,7 @@ const Button = (props) => {
       onClick={onClick}
       disabled={loading}
     >
-      {buttonText}
-      {loading && <PropagateLoader color="#36d7b7" />}
+      {loading ? <PropagateLoader color="#36d7b7" /> : buttonText}
     </button>
   );
 };

@@ -26,6 +26,7 @@ const AuthRoutes = () => {
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<Chats />} />
       <Route path="/chats" element={<Chats />} />
     </Routes>
   );

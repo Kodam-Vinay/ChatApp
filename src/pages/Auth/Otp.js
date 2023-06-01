@@ -58,7 +58,7 @@ const OtpScreen = () => {
     }, 3000);
     if (res.status === 200) {
       setLoginToken((prev) => res.token);
-      //   return navigate("/otp");
+      return navigate("/");
     }
     // console.log("loginResponse", res);
   };

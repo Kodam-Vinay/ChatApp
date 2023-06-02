@@ -49,10 +49,15 @@ const Chats = () => {
       <ul className="logos-container">
         <Circle />
         {!loading ? (
-          userData.length &&
-          userData.map((eachUser) => (
-            <EachUserProfileStory userData={eachUser} key={eachUser.id} />
-          ))
+          userData.length ? (
+            userData.map((eachUser) => (
+              <EachUserProfileStory userData={eachUser} key={eachUser.id} />
+            ))
+          ) : (
+            <div className="data-loader">
+              <span>{"Nothing Found"}</span>
+            </div>
+          )
         ) : (
           <div className="loader-spinner">
             <BarLoader color="#fff" size={25} />

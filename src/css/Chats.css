@@ -60,3 +60,15 @@
     justify-content: center;
     
   }
+  .data-loader{
+    z-index: 1;
+    top:10;
+    position: absolute;
+    width: 25%;
+    height:80vh ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+  }

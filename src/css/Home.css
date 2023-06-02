@@ -52,4 +52,39 @@
     align-items: center;
     text-decoration: none;
   }
+  .bg-userImage
+  {
+    position: relative;
+    
+  }
+  .bg-UserImage{
+    position: relative;
+    width: 125px;
+    height: 125px;
+    margin:50px;
+    border-radius: 50%;
+    align-self: center;
+    padding: 20px;
+  }
+  .bg-Camera-div
+  {
+   
+    position: relative;
+
+    top:-36%;
+    left: 55%;
+    
+
+  }
+  .bg-camera
+  {
+    width: 50px;
+    height: 50px;
   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #16a485;
+    border-radius: 50%;
+    border: none;
+  }

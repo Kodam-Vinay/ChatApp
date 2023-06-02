@@ -5,6 +5,7 @@ import Login from "./pages/Auth/Login";
 import Chats from "./pages/Chats";
 import { MainContext } from "./Context";
 import OtpScreen from "./pages/Auth/Otp";
+import ProfileSetup from "./pages/ProfileSetup";
 
 const ProdRoutes = () => {
   const { loginToken } = useContext(MainContext);
@@ -27,6 +28,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Chats />} />
+      <Route path="/profile" element={<ProfileSetup />} />
       <Route path="/chats" element={<Chats />} />
       <Route path="*" element={<Chats />} />
     </Routes>

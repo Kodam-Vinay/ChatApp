@@ -10,7 +10,19 @@ const Button = (props) => {
       onClick={onClick}
       disabled={loading}
     >
-      {loading ? <PropagateLoader color="#36d7b7" /> : buttonText}
+      {loading ? (
+        <PropagateLoader
+          size={10}
+          color="#36d7b7"
+          cssOverride={{
+            marginTop: -5,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        />
+      ) : (
+        buttonText
+      )}
     </button>
   );
 };

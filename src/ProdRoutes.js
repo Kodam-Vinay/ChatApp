@@ -28,6 +28,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Chats />} />
       <Route path="/chats" element={<Chats />} />
+      <Route path="*" element={<Chats />} />
     </Routes>
   );
 };

@@ -39,7 +39,7 @@ const Chats = () => {
     setTimeout(() => {
       setUserData((prev) => users);
       setLoading((prev) => false);
-    }, 3000);
+    }, 5000);
   }, []);
   return (
     <div className="chat-bg-container">

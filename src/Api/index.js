@@ -1,11 +1,14 @@
 import axios from "axios";
 import { ErrorToast, SuccessToast } from "../components/Toast";
+import { getToken } from "../Storage";
 
-const baseUrl = "https://chat-api.cyclic.app/api/";
+const lstoken = await getToken();
+
+// const baseUrl = "https://chat-api.cyclic.app/api/";
+const baseUrl = "http://localhost:5000/api";
 
 export const ApiCall = axios.create({
   baseURL: baseUrl,
-  timeout: 10000,
   validateStatus: (status) => status < 500,
   headers: { "Content-Type": "application/json" },
 });
@@ -31,4 +34,15 @@ export const verifyOtp = async (number, otp) => {
     ErrorToast(data.message);
   }
   return data;
+};
+
+export const uploadImage = async (FormData) => {
+  try {
+    let headers = { "Content-Type": "multipart/form-data", lstoken };
+    let res = await ApiCall.post("user/auth/update-image", FormData, {
+      headers: headers,
+    });
+  } catch (error) {
+    ErrorToast(error);
+  }
 };

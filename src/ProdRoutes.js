@@ -20,6 +20,7 @@ const AuthRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/otp" element={<OtpScreen />} />
+      <Route path="*" element={<Login />} />
     </Routes>
   );
 };

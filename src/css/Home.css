@@ -55,7 +55,7 @@
   .bg-userImage
   {
     position: relative;
-    
+    margin-top:100px
   }
   .bg-UserImage{
     position: relative;
@@ -66,25 +66,25 @@
     align-self: center;
     padding: 20px;
   }
+  
   .bg-Camera-div
   {
-   
     position: relative;
-
     top:-36%;
     left: 55%;
-    
-
   }
+  
   .bg-camera
   {
-    width: 50px;
-    height: 50px;
-  
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #16a485;
     border-radius: 50%;
     border: none;
+  }
+  .bg-camera:hover{
+    background-color: #14d5b5;
   }

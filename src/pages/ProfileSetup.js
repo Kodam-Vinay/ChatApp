@@ -8,6 +8,7 @@ import { ErrorToast } from "../components/Toast";
 import { uploadImage } from "../Api";
 const Home = () => {
   const [user, setUser] = useState({ name: "", about: "" });
+  const [loading, setLoading] = useState(false);
   const inputElement = useRef();
   const onChange = (e) => {
     console.log(e);
@@ -16,16 +17,18 @@ const Home = () => {
     inputElement.current.click();
   };
   const ImageUpload = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const file = event.target.files[0];
     var formData = new FormData();
     if ((file?.type).includes("image")) {
       formData.append("image", file);
+      setLoading(true);
       let res = await uploadImage(formData);
       console.log({ formData });
     } else {
       ErrorToast("Please Upload Image Only");
     }
+    setLoading(false);
   };
   return (
     <div className="bg-container">
@@ -47,7 +50,7 @@ const Home = () => {
       </div>
       <AppInput placeholder="Your name" onChange={onChange} />
 
-      <Button buttonText={"Save"} />
+      <Button buttonText={"Save"} loading={loading} />
     </div>
   );
 };

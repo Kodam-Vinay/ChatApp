@@ -42,6 +42,13 @@ export const uploadImage = async (FormData) => {
     let res = await ApiCall.post("user/auth/update-image", FormData, {
       headers: headers,
     });
+    const { data } = res;
+    if (data.status == 200) {
+      SuccessToast(data.message);
+    } else {
+      ErrorToast(data.message);
+    }
+    return data;
   } catch (error) {
     ErrorToast(error);
   }

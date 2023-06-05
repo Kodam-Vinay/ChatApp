@@ -5,17 +5,19 @@ import AppInput from "../components/AppInput";
 import blankImage from "../assets/images/blankimg.webp";
 import Camera from "../components/svgs/Camera";
 import { ErrorToast } from "../components/Toast";
-import { uploadImage } from "../Api";
+import { uploadImagem, fetchImage } from "../Api";
 const Home = () => {
   const [user, setUser] = useState({ name: "", about: "" });
   const [loading, setLoading] = useState(false);
   const inputElement = useRef();
+
   const onChange = (e) => {
     console.log(e);
   };
   const focusInput = () => {
     inputElement.current.click();
   };
+
   const ImageUpload = async (event) => {
     // event.preventDefault();
     const file = event.target.files[0];
@@ -29,6 +31,10 @@ const Home = () => {
       ErrorToast("Please Upload Image Only");
     }
     setLoading(false);
+  };
+
+  const ImageFetch = async () => {
+    let res = await fetchImage(formData);
   };
   return (
     <div className="bg-container">

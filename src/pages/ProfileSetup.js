@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/Home.css";
 import Button from "../components/Button";
 import AppInput from "../components/AppInput";
 import blankImage from "../assets/images/blankimg.webp";
 import Camera from "../components/svgs/Camera";
 import { ErrorToast } from "../components/Toast";
-import { uploadImagem, fetchImage } from "../Api";
-const Home = () => {
-  const [user, setUser] = useState({ name: "", about: "" });
+import { uploadImage, fetchImage } from "../Api";
+const ProfileSetup = () => {
+  const [user, setUser] = useState({ name: "", image: "" });
   const [loading, setLoading] = useState(false);
+  const [fetch, setFetch] = useState(0);
   const inputElement = useRef();
 
   const onChange = (e) => {
@@ -19,13 +20,16 @@ const Home = () => {
   };
 
   const ImageUpload = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const file = event.target.files[0];
     var formData = new FormData();
     if ((file?.type).includes("image")) {
       formData.append("image", file);
       setLoading(true);
       let res = await uploadImage(formData);
+      if (res.status === 200) {
+        setFetch((prev) => prev + 1);
+      }
       console.log({ formData });
     } else {
       ErrorToast("Please Upload Image Only");
@@ -34,12 +38,26 @@ const Home = () => {
   };
 
   const ImageFetch = async () => {
-    let res = await fetchImage(formData);
+    setLoading(true);
+    let res = await fetchImage();
+    console.log({ res });
+    if (res.status === 200) {
+      const { name, image } = res.data;
+      setUser((prev) => ({ ...prev, name: name, image: image }));
+    }
+    setLoading(false);
   };
+
+  useEffect(() => {
+    ImageFetch();
+  }, [fetch]);
   return (
     <div className="bg-container">
       <div className="bg-userImage">
-        <img src={blankImage} className="bg-UserImage" />
+        <img
+          src={user?.image ? user.image : blankImage}
+          className="bg-UserImage"
+        />
         <div className="bg-Camera-div">
           <button className="bg-camera" onClick={focusInput}>
             <Camera />
@@ -61,4 +79,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ProfileSetup;

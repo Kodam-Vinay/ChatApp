@@ -4,8 +4,8 @@ import { getToken } from "../Storage";
 
 const lstoken = await getToken();
 
-const baseUrl = "https://chat-api.cyclic.app/api/";
-// const baseUrl = "http://localhost:5000/api";
+// const baseUrl = "https://chat-api.cyclic.app/api/";
+const baseUrl = "http://localhost:5000/api";
 
 export const ApiCall = axios.create({
   baseURL: baseUrl,
@@ -47,6 +47,24 @@ export const uploadImage = async (FormData) => {
       SuccessToast(data.message);
     } else {
       ErrorToast(data.message);
+    }
+    return data;
+  } catch (error) {
+    ErrorToast(error);
+  }
+};
+
+export const fetchImage = async () => {
+  try {
+    let headers = { "Content-Type": "application/json", lstoken };
+    let res = await ApiCall.get("user/auth/get-user", {
+      headers: headers,
+    });
+    const { data } = res;
+    if (data.status == 200) {
+      // SuccessToast(data.message);
+    } else {
+      // ErrorToast(data.message);
     }
     return data;
   } catch (error) {

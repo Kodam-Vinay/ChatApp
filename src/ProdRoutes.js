@@ -29,8 +29,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Chats />} />
-      <Route path="/profile" element={<ProfileSetup />} />
       <Route path="/chats" element={<Chats />} />
+      <Route path="/profile" element={<ProfileSetup />} />
       <Route path="*" element={<Chats />} />
     </Routes>
   );

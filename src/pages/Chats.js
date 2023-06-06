@@ -5,33 +5,34 @@ import NavigationBar from "../components/NavigationBar";
 import { useEffect, useState } from "react";
 import Circle from "../components/svgs/Cirlce";
 import { BarLoader, SkewLoader } from "react-spinners";
-const users = [
-  {
-    id: uuidv4(),
-    name: "vinay",
-    imgUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsZlQZfQdzLu4FDubq5dmk3hB41mR2XWR8OQ&usqp=CAU",
-  },
-  {
-    id: uuidv4(),
-    name: "vinni",
-    imgUrl:
-      "https://www.whatsappimages.in/wp-content/uploads/2021/07/Top-HD-sad-quotes-for-whatsapp-status-in-hindi-Pics-Images-Download-Free.gif",
-  },
-  {
-    id: uuidv4(),
-    name: "test1",
-    imgUrl:
-      "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-  },
-  {
-    id: uuidv4(),
-    name: "test",
-    imgUrl:
-      "https://www.whatsappimages.in/wp-content/uploads/2021/07/Top-HD-sad-quotes-for-whatsapp-status-in-hindi-Pics-Images-Download-Free.gif",
-  },
-];
+
 const Chats = () => {
+  const users = [
+    {
+      id: uuidv4(),
+      name: "vinay",
+      imgUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsZlQZfQdzLu4FDubq5dmk3hB41mR2XWR8OQ&usqp=CAU",
+    },
+    {
+      id: uuidv4(),
+      name: "vinni",
+      imgUrl:
+        "https://www.whatsappimages.in/wp-content/uploads/2021/07/Top-HD-sad-quotes-for-whatsapp-status-in-hindi-Pics-Images-Download-Free.gif",
+    },
+    {
+      id: uuidv4(),
+      name: "test1",
+      imgUrl:
+        "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+    },
+    {
+      id: uuidv4(),
+      name: "test",
+      imgUrl:
+        "https://www.whatsappimages.in/wp-content/uploads/2021/07/Top-HD-sad-quotes-for-whatsapp-status-in-hindi-Pics-Images-Download-Free.gif",
+    },
+  ];
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState([]);
   useEffect(() => {
@@ -51,7 +52,7 @@ const Chats = () => {
         {!loading ? (
           userData.length ? (
             userData.map((eachUser) => (
-              <EachUserProfileStory userData={eachUser} key={eachUser.id} />
+              <EachUserProfileStory userdata={eachUser} key={eachUser.id} />
             ))
           ) : (
             <div className="data-loader">

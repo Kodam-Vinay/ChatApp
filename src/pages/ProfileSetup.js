@@ -5,11 +5,16 @@ import AppInput from "../components/AppInput";
 import blankImage from "../assets/images/blankimg.webp";
 import Camera from "../components/svgs/Camera";
 import { ErrorToast } from "../components/Toast";
-import { uploadImage, fetchImage } from "../Api";
+import { uploadImage, fetchImage, getImage } from "../Api";
+import { Buffer } from "buffer";
+import btoa from "btoa";
+import { ClimbingBoxLoader, ClipLoader } from "react-spinners";
 const ProfileSetup = () => {
   const [user, setUser] = useState({ name: "", image: "" });
   const [loading, setLoading] = useState(false);
   const [fetch, setFetch] = useState(0);
+  const [imageUrl, setImageUrl] = useState("");
+  const [imageLoading, setImageLoading] = useState(false);
   const inputElement = useRef();
 
   const onChange = (e) => {
@@ -39,12 +44,40 @@ const ProfileSetup = () => {
 
   const ImageFetch = async () => {
     setLoading(true);
-    let res = await fetchImage();
-    console.log({ res });
-    if (res.status === 200) {
-      const { name, image } = res.data;
-      setUser((prev) => ({ ...prev, name: name, image: image }));
+    setImageLoading((prev) => true);
+    if (fetch === 0) {
+      let res = await fetchImage();
+      console.log({ res });
+      if (res.status === 200) {
+        const { name, image } = res.data;
+        setUser((prev) => ({ ...prev, name: name, image: image }));
+      }
+      let imgResp = await getImage();
+      // let b64Response = btoa(imgResp);
+      if (imgResp.status === 200) {
+        let imgData = imgResp.data;
+
+        setImageUrl((prev) => "data:image/png;base64," + imgData);
+        setImageLoading((prev) => false);
+        console.log(imgResp);
+      }
+    } else {
+      setImageLoading((prev) => true);
+      setTimeout(async () => {
+        let response = await fetchImage();
+        let imgResp = await getImage();
+      }, 15000);
+      setTimeout(async () => {
+        let imgResp = await getImage();
+        if (imgResp.status === 200) {
+          let imgData = imgResp.data;
+          setImageUrl((prev) => "data:image/png;base64," + imgData);
+          console.log(imgResp);
+          setImageLoading((prev) => false);
+        }
+      }, 20000);
     }
+    // b64Response = Buffer.from(b64Response, "base64").toString("ascii");
     setLoading(false);
   };
 
@@ -54,12 +87,24 @@ const ProfileSetup = () => {
   return (
     <div className="bg-container">
       <div className="bg-userImage">
+        {imageLoading && (
+          <div className="loader-img">
+            <ClipLoader color="#36d7b7" />
+          </div>
+        )}
         <img
-          src={user?.image ? user.image : blankImage}
+          // src={user?.image ? user.image : blankImage}
+          // className="bg-UserImage"
+          src={imageUrl ? imageUrl : blankImage}
           className="bg-UserImage"
+          style={{ opacity: imageLoading ? 0.25 : 1 }}
         />
         <div className="bg-Camera-div">
-          <button className="bg-camera" onClick={focusInput}>
+          <button
+            className="bg-camera"
+            onClick={focusInput}
+            disabled={imageLoading}
+          >
             <Camera />
             <input
               type="file"
